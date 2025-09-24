@@ -1,26 +1,24 @@
 # Visualisierung von Geodaten (DTM) | SoSe25
 
-Abschlussprojekt in Form einer Zusammenfassung von allen Aufgaben im Kurs Visualisierung von Geodaten (DTM), mit Layout, anleitung zur Erstellung des Layouts, sowie Vor,- und Nachteilen der angewendeten Methoden.
+Zusammenfassung aller Aufgaben im Kurs Visualisierung von Geodaten (DTM), mit Layout, Arbeitsschritte, sowie Vor,- und Nachteilen der angewendeten Methoden.
+Autor: Nick Bitter
 
 ## Dasymetrische Choroplethenkarte
 
-![](https://github.com/Fefiro/DTM/blob/main/01_Gegen%C3%BCberstellung.jpg)
+![](https://github.com/nibi5637/DTM-SoSe-2025/blob/main/Choroplethenkarte%20u.%20Dasymetrische%20Choropletenkarte.png)
 
-Erstellung der Karte
-- Download der LOR-Daten (Daten zur Bevölkerungsstatistik), CLC-Daten und der Geometrie Berlin 
-- Verbinden der Geometrie (Berlin) mit den Sachdaten (Bevölkerungsdaten) mittels einer Verknüpfung
-- Filterung der CLC-Daten nach den Urbanen-Räumen (111,112)
-- Speicherung der Daten und Auflösen
+Arbeitsschritte
+- Download der LOR-Daten mit Bevölkerungsstatistik, CLC-Daten und der Geometrie Berlin 
+- Verknüpfen der Geometrie Berlin mit den Bevölkerungsdaten
+- Filterung der CLC-Daten über Ausdruck: "c18" = '111' OR '112' um Urbane-Räume-Layer zu erhalten
+- Speicherung der Daten und Auflösen des Layers
 - Verschneiden der restlichen Flächen als unbewohnte Gebiete
 - Verschneidung der Bevölkerungsdaten mit den Urbanen Räumen
-- Berechnung der Flächen
-- für die Visualisierung wird eine abgestufte Symbolisierung verwendet
-- der Wert wird aus den Einwohnern / Fläche /10000 als Einwohner pro m² berechnet
-- es werden 5 Klassen nach Jenks gebildet
-- es ist darauf zu achten, dass die Klassen nicht verbunden sind
-- für die Symbolisierung wird ein Farbverlauf von Weiß (gering) nach Rot (hoch) genommen
-- für die Druckzusammenstellen werden die beiden Kartenbilder platziert
-- Überschrift, Maßstab, Maßstabsbalken, Quellen, Legende und Ersteller hinzugefügt
+- Berechnung der reduzierten Fläche in neuer Spalte in der Attributtabelle
+- Abgestufte Symbolisierung zur Visualisierung
+- Einwohner pro m² = Einwohnern / Fläche /10000 
+- Klassifizierung mittels natürlicher Unterbrechungen (Jenks)
+- für die Symbolisierung, ein Farbverlauf von Weiß nach Rot
 
 ### Vorteile
 - Realistischere Darstellung von Verteilungen, sie zeigen Daten dort, wo sie tatsächlich auftreten
@@ -37,21 +35,18 @@ Erstellung der Karte
 
 ## Gitterchoroplethenkarten
 
-![](https://github.com/Fefiro/DTM/blob/main/02_Kirschatlas%20Berlin.png)
+![](https://github.com/nibi5637/DTM-SoSe-2025/blob/main/Kirschb%C3%A4ume_Berlin.png)
 
-Erstellung der Karte
-- Download der Daten: Kirschbäume (FIS Broker), Geometrie Berlin
-- Erzeugen der Hexagone mit Gittererzeugen
+Arbeitsschritte
+- Download der Daten von FIS Broker (Baumbestand), Geometrie Berlin
+- Erzeugen der Hexagone mit Forschungswerkzeuge - Gitterer zeugen
+- Seitenlänge von 500m für die Hexagone wählen
 - Verschneidung der Hexagone mit der Fläche von Berlin
-- Einladen der Punktdaten (Kirschbäume)
-- Punkte (Bäume) in Polygon zählen: beim Zähler ist darauf zu achten, dass in jedem Feld ein Attribut steht, also am besten ID nehmen
-- für die Visualisierung wird eine abgestufte Symbolisierung verwendet
-- als Feld wird das neu erstellt Zählerfeld genommen
-- es werden 5 Klassen nach Jenks gebildet
-- es ist darauf zu achten, dass die Klassen nicht verbunden sind
-- für die Symbolisierung wird ein Farbverlauf von Weiß (gering) nach Rot (hoch) genommen
-- für die Druckzusammenstellen wird das Kartenbilder platziert
-- Überschrift, Maßstab, Maßstabsbalken, Quellen, Legende und Ersteller hinzugefügt
+- Einladen der Punktdaten (Baumbestand)
+- Summe der Punkte in einem Hexagon bestimmen (Attribute nach Position verknüpfen)
+- Abgestufte Symbolisierung zur Visualisierung
+- Klassifizierung mittels natürlicher Unterbrechungen (Jenks)
+- Bei Symbolisierung ist weiß = 0
 
 ### Vorteile
 - Unabhängig von administrativen Grenzen, das erlaubt objektivere, vergleichbare räumliche Betrachtung
@@ -68,9 +63,9 @@ Erstellung der Karte
 
 ## Punktrasterkarte
 
-![](https://github.com/Fefiro/DTM/blob/main/03_Karte_AirBNB_A3.png)
+![]()
 
-Erstellung der Karte
+Arbeitsschritte
 - Download der Daten: Übernachtungsdaten und Geometrie der Stadt von airbnb
 - Erzeugen eines Gitternetzes über das Stadtgebiet z.B. 500m mit Gittererzeugen
 - Verschneidung des Gitternetzes und der Geometrie der Stadt
@@ -96,18 +91,17 @@ Erstellung der Karte
 
 ## Value-by-alpha Mapping
 
-![](https://github.com/Fefiro/DTM/blob/main/04_UE_4.png)
+![](https://github.com/nibi5637/DTM-SoSe-2025/blob/main/Wahlergebnisse_21_25.png)
 
-Erstellung der Karte
+Arbeitsschritte
 - Download der Daten: Wahldaten und Geometrie von der Bundeswahlleitung
-- Bereinigen der Wahldaten (auf 5 Parteien und Zweitstimme)
+- Datenaufbereitung auf 5 Parteien (CDU + CSU, SPD,, Grüne, Linke, AfD) und nur Zweitstimme ist relevant
 - Verknüpfen der Geometrie mit den Sachdaten über die Wahlkreisnummer
+- Neue Felder berechnen
 - Ermitteln des Wahlsiegers je Wahlkreis + übernehmen der Prozentzahl in je eine neue Spalte
 - Die Wahlkreise werden in die Farbe der Partei des Wahlsiegers kategorisiert
-- Regelbasiert wird eine Fläche über die Wahlkreise gelegt, die die Intensität der Flächen anhand der Prozentualen Anteile am Gesamtergebnis stärker (höhere Anteil), blasser (geringer Anteil) darstellt
-- für die Druckzusammenstellen werden die Kartenbilder für 2021 und 2025 platziert
-- Überschrift, Maßstab, Maßstabsbalken, Quellen, Legende und Ersteller hinzugefügt
-- zusätzlich muss entweder aus der Legende deutlich werden, warum die Flächen blasser sind, oder es muss einen Hinweistext geben
+- Eine Fläche wird über die Wahlkreise gelegt, die ihre Intensität je nach prozentualer Anteile am Gesamtergebnis anpasst
+- Durch Legende oder Text sollte klar werden, warum die Flächen unterschiedlich Intensiv dargestellt werden
 
 ### Vorteile
 - Bessere Gewichtung nach Bedeutung
@@ -123,16 +117,15 @@ Erstellung der Karte
 
 ## Tilemaps
 
-![](https://github.com/Fefiro/DTM/blob/main/05_Geburten%20in%20DE.png)
+![](https://github.com/nibi5637/DTM-SoSe-2025/blob/main/MP_Deu.png)
 
-Erstellung der Karte
-- Download der Daten: Statistisches Bundesamt
-- Erstellen eines Gitters über Deutschland (150km)
-- Löschen der Gitterflächen, sodass der Umriss von Deutschland zu erkenn ist; 16 Teile, eins pro Bundesland
-- Aufbereiten der Sachdaten, es ist darauf zu achten, dass ein Verknüpfungsfeld zwischen Sachdaten und Geometrie geschaffen wird
+Arbeitsschritte
+- Download der Daten von DESTATIS (Statistisches Bundesamt)
+- Erzeugen eines Gitters über Deutschland mit einer Seitenlänge von 150km
+- Gitterzellen löschen, bis der Umriss von Deutschland zu erkenn ist und 16 Zellen über bleiben
+- Neue Spalten in der Attributtabelle des Gitters mit den Abkürzungen der Bundesländer füllen
+- Aufbereiten und verknüpfung der Sachdaten
 - Symbolisierung abgestuft in 5 Gruppen
-- Für die Druckzusammenstellen wird das Kartenbild platziert
-- Überschrift, Quellen, Legende und Ersteller hinzugefügt
 
 ### Vorteile
 •	Gleiche visuelle Repräsentation, große Flächenländer wie Bayern oder Niedersachsen erhalten nicht mehr Platz als kleine Stadtstaaten wie Bremen oder Hamburg
@@ -146,22 +139,19 @@ Die Karte ist übersichtlich, platzsparend und symmetrisch, ideal für Präsenta
 
 ## Flowmaps
 
-![](https://github.com/Fefiro/DTM/blob/main/06_Studenten.png)
+![](https://github.com/nibi5637/DTM-SoSe-2025/blob/main/REF_KAZ.png)
 
-Erstellung der Karte
-- Download der Daten: Bereitgestellte Studentenaustauschdaten, Geometriedaten von Naturalearth 
+Arbeitsschritte
+- Download der Datenvon UNHCR, Geometriedaten von Naturalearth 
 - Bearbeitung der Sachdaten 
 - Verknüpfung von Sachdaten mit Geometriedaten
-- Erstellen der Zentroide für die Länder die gebraucht werden
-- Erstellen eines extra Punktes vom Ausgangspunkt sie die Symbolisierung
+- Erstellen der Zentroide (Mittelpunkte) für alle Länder-Geometrien die gebraucht werden
+- Erstellen eines extra Punktes vom Ausgangspunkt
+- Eigenes KBS einrichten (Orthographische Projektion:+proj=ortho +lat_0=50.3 +lon_0=30.3 +x_0=0+ y_0=0 +a=6371000 +b=6371000 +units=m +no_defs)
 - Berechnen der X- und Y-Koordinate in der Attributtabelle des Punktlayers
-- Einfügen der X- und Y-Koordinate in die Attributtabelle der Hauptstadt wo die Flüchtlinge herkommen
-- mit dem Werkzeug XY to Line Linien Zwischen der Hauptstadt der Flüchtlinge und dem Zentroid des Fluchtlandes erstellen Projektion: +proj=ortho +lat_0=50.3 +lon_0=30.3 +x_0=0+ y_0=0 +a=6371000 +b=6371000 +units=m +no_defs
-- Symbolisierung der Erde mit dem Punkt der Hauptstadt eine Ausdehnung von 12742000 m im Maßstab einstellen, über Markierung und Füllung die Erde erstellen (Farbe, Glow
-- Farbe für die Staaten festlegen
-- Flüchtlingszahlen über abgestufte Punkte und Linien darstellen
-- für die Druckzusammenstellen wird das Kartenbilder platziert
-- Überschrift, Quellen, Legende und Ersteller hinzugefügt
+- Einfügen der Koordinaten in die Attributtabelle vom Ausgangspunkt
+- mit dem Werkzeug XY to Line Linien Zwischen dem Ausgangspunkt und den anderen Zentroiden
+- Symbolisierung der Erde über Markierung und Füllung die erstellen (Farbe und Glow)
 
 ### Vorteile
 - Darstellung von Objekten in einer Karte zueinander, flowmaps können Beziehungen zwischen Objekten in einer Karte anzeigen und nicht nur die Daten des Objekts
@@ -176,23 +166,21 @@ Erstellung der Karte
 
 ## Mesh-Daten
 
-![](https://github.com/Fefiro/DTM/blob/main/07_Orkan_Kyrill.png)
+![](https://github.com/nibi5637/DTM-SoSe-2025/blob/main/Kyrill.gif)
 
 Link zum GIF: https://cloud.bht-berlin.de/index.php/s/BYnH22q3Ei4iNc7
 
-Erstellung der Karte
-- Download der gegeben Wetterdaten im grip-Format (von Copernicus)
-- Einladen der grip-Daten
-- Hinzufügen eines Deutschland-Umriss zur Orientierung
-- Symbolisiert wird der Wind als Fläche und als Linie
-- Erstellen eines Punktlayers der für die Darstellung der Zeit benötigt wird und in der Beschriftung mit format_date( @map_start_time, 'd. MMMM yyyy')  || '\n'  ||  format_date( @map_start_time, 'HH:mm') eingestellt wird
-- Die Druckzusammenstellung findet auf dem Hauptoberfläche statt und nicht in dem Layout.
-- In Ansicht Dekoration wird ein Titel, Maßstab, Quellen und der Ersteller hinzugefügt
+Arbeitsschritte
+- Download der Verwaltungsgränzen Deutschlands und Wetterdaten im grip-Format von Copernicus
+- Einladen der grip-Daten  (Mesh-Layer mit Zeitstempel)
+- Symbolisiert wird Windgeschwindigkeit als Farbflächen (Farbverlauf violett zu orange) und Windrichtung als Pfeile darstellen (Abstände und Stil anpassen)
+- Erstellen eines Punktlayers: für die Darstellung der Zeit und in der Beschriftung mit format_date( @map_start_time, 'd. MMMM yyyy')  || '\n'  ||  format_date( @map_start_time, 'HH:mm') eingestellt wird
+- Layout durch Dekorationen ergänzen
 
 - Für die Animation muss man die Konsole Zeitsteuerungsfenster aufrufen
 - Einstellen der Bildrate, Animationsbereich und Abschnitt
 - Speichern der einzelnen Bilder 
-- Zusammenfügen der einzelnen Bilder zu einen GIF mit einem Browserprogramm oder über Photoshop
+- GIF erstellen mit einem Browserprogramm oder über Photoshop
 
 ### Vorteile
 - Darstellung zeitlicher Entwicklungen 
@@ -209,16 +197,15 @@ Erstellung der Karte
 
 ## Animation in GIS
 
-![](https://github.com/Fefiro/DTM/blob/main/09_Meteor%20Lesbar.png)
+![](https://github.com/nibi5637/DTM-SoSe-2025/blob/main/Lyriden.png)
 
-Erstellung der Karte
-- Downlaoad der Daten: Download der Daten von https://tammojan.github.io/meteormap/ für den die Alpha Capricornids im Juni 2024 als csv
+Arbeitsschritte
+- Downlaoad der Daten von Meteor-Map
+- Hintergrund wählen
 - einladen der csv über die Koordinaten
-- bei den Einzelsymbolen den Typ Markierung wählen und als Unterpunkt den Geometriegenerator, dort Ausdruck make_line ( @geometry, make_point( "LonEnd", "LatEnd" )) eingeben
-- für die weitere Visualisierung eine interpolierte Linie erzeugen und die wie gewünscht visualisieren
-- eine dunkle Hintergrundkarte verwenden
-- für das Druckzusammenstellen wird das Kartenbilder auf dem gesamten Blatt platziert
-- Überschrift, Quellen und Ersteller hinzugefügt
+- Mit dem „Geometrie nach Ausdruck“-Tool eine Linie für jeden Meteor erstellen ( @geometry, make_point( "LonEnd", "LatEnd" ))
+- Einen Varbverlauf für die Linien wählen um einen Meteorschweif darzustellen
+
 
 ### Vorteile
 - Veränderung über einen Zeitraum sichtbar machen
@@ -234,16 +221,14 @@ Erstellung der Karte
 
 ## 3D-Gebäudemodelle
 
-![](https://github.com/Fefiro/DTM/blob/main/08_Dresden.png)
+![](https://github.com/nibi5637/DTM-SoSe-2025/blob/main/Dresden_3D.png)
 
-Erstellung der Karte
-- Download der Daten: Digitale 3D-Stadtmodelle von Geodaten Sachsen: Dresden
+Arbeitsschritte
+- Download der Daten der Digitale 3D-Stadtmodelle von Geodaten-Sachsen
 - Unter Symbolisierung auf 2,5D stellen
-- für die Höhe H_Objekt wählen und den Winkel auf 90° stellen, Schatten deaktivieren
-- die Symbolisierung wieder auf Einzelsymbol stellen und jetzt individuell einfärben
-- bei 3D-Ansicht den Versatz noch mit H_Objekt - H_Absolut einstellen
+- Als Höhe H_Objekt wählen und den Winkel auf 90° stellen, Schatten deaktivieren
+- die Symbolisierung wieder auf Einzelsymbol stellen und einfärben
 - Visualisierung unter Ansicht 3D-Kartenansicht erstellen
-- Das Produkt ist ein Screenshot daraus
 
 ### Vorteile
 - Realitätsnähere Darstellung. 3D-Gebäudemodelle können die Realität viel besser darstellen als es eine Karte kann. Vor allem wenn es weniger um die Positionen von Gebäuden, sondern um deren Eigenschaften, wie Höhe oder Form geht.
