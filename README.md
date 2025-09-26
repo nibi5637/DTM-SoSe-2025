@@ -21,17 +21,16 @@ Arbeitsschritte
 - für die Symbolisierung, ein Farbverlauf von Weiß nach Rot
 
 ### Vorteile
-- Realistischere Darstellung von Verteilungen, sie zeigen Daten dort, wo sie tatsächlich auftreten
-- Vermeidung von Flächenverzerrungen, die bei klassischen Choroplethenkarten zu falschen Interpretationen führen. Dasymetrische Karten reduzieren diesen Effekt
-- Höhere Genauigkeit bei kleinen Flächen, besonders nützlich bei Phänomenen die räumlich ungleich verteilt sind (z. B. Bewohner)
-- Vermeidung von falscher Darstellung, Indem unbedeutende Flächen nicht dargestellt werden
-- Bessere Vergleichbarkeit zwischen Regionen, da die Darstellung an reale Nutzungsflächen angepasst ist
+- Nur bewohnte Flächen werden berücksichtigt, unbewohnte (Wälder, Parks, Wasser) sind ausgeschlossen
+- Realistischere Darstellung von Verteilungen, da nur die tatsächlich genuzte Fläche dargestellt wird
+- Keine Flächenverzerrungen, die bei klassischen Choroplethenkarten zu falschen Interpretationen führen
+- Bessere Vergleichbarkeit zwischen Regionen
 
 ### Nachteile
-- Die notwendigen Daten wie z.B. Landnutzungsdaten liegen nicht immer vor
-- Die Erstellung ist komplexer als bei klassischen Choropletenkarten, da zusätzliche Berechnungen und Modellierungen notwendig sind
-- Die Karten können für manche Betrachter schwerer zu verstehen sein, da die Flächen nicht mehr direkt mit administrativen Einheiten - übereinstimmen
-- Die Verteilung innerhalb einer Einheit ist noch immer modelliert und bildet die Verhältnisse nicht exakt ab
+- Genaue Daten liegen nicht immer vor
+- Die Erstellung ist komplexer als bei klassischen Choropletenkarten, durch zusätzliche Berechnungen und Modellierungen
+- Die Ansicht könnte in Fällen schwerer zu verstehen sein
+- Auch "nicht urbaner Raum" kann bewohnt sein (Falsche Darstellung möglich)
 
 ## Gitterchoroplethenkarten
 
@@ -49,17 +48,16 @@ Arbeitsschritte
 - Bei Symbolisierung ist weiß = 0
 
 ### Vorteile
-- Unabhängig von administrativen Grenzen, das erlaubt objektivere, vergleichbare räumliche Betrachtung
-- Gleiche Flächengröße, also besser vergleichbar, kein Flächenverzerrungseffekt durch große Gebiete mit wenig Kirschbäumen)
-- Förderung räumlicher Genauigkeit, ermöglichen Gitterkarten eine sehr differenzierte Darstellung räumlicher Muster
-- Geeignet für flächenhafte Daten, da diese kontinuierlich über den Raum variieren und nicht an politische Grenzen gebunden sind (meistens)
-- Vermeidung von unrealistischen Werten aufgrund von zu kleinen oder großen Flächen (Wie bei Dasymetrische Choroplethenkarten)
+- Unabhängig von administrativen Grenzen, das erlaubt objektivere und vergleichbare räumliche Betrachtung
+- Alle Rasterzellen gleich groß, somit besser vergleichbar
+- Je nach Daten oder Aesthetik, flexibel in Auflösung und Form
+- Geeignet für flächenhafte Daten
+- Vermeidung von unrealistischen Werten aufgrund von zu kleinen oder großen Flächen
 
 ### Nachteile 
-- Jede Rasterzelle wird separat analysiert und dargestellt  Hohe Datenmenge erforderlich
-- Die Verarbeitung und Darstellung großer Rasterdaten kann rechenaufwendig sein
-- Durch die starke Generalisierung können kleine räumliche Unterschiede verloren gehen oder verfälscht werden
-
+- Rechenaufwand und hohe Datenmenge erforderlich bei vielen kleinen Rasterzellen
+- Verzerrung oder Verfälschung der Aussage bei großen Rasterzellen
+- Rasterzellen ignorieren natürliche oder administrative Grenzen
 
 ## Punktrasterkarte
 
@@ -81,13 +79,16 @@ Arbeitsschritte
 - Überschrift, Maßstab, Maßstabsbalken, Quellen, Legende und Ersteller hinzugefügt
 
 ### Vorteile
-- Vorteile ähnlich zu Gitterchoroplethenkarte, durch nutzen der Punkte kann eine Karte unter die Punkte gelegt werden, was bei der räumlichen Orientierung hilft
-- Nutzung der Punktgröße zum Darstellen von Daten, die Punktgröße kann angepasst werden, um sowohl große als auch kleine Datenmengen effektiv darzustellen
+- Einfach und schnell zu verstehen
+- Anschaulich und viele Informationen in einer Ansicht
+- Unterschiedliche Punktgrößen zum Darstellen von Daten
+- Sowohl in einer Gesamtdarstellung als auch in getrennten thematischen Karten umsetzbar.
 
 ### Nachteile
-- Die Wahl der Punktdichte kann zu einer falschen Wahrnehmung der tatsächlichen Werte führen.
+- Die Wahl der Punktdichte kann zu einer falschen Wahrnehmung der tatsächlichen Werte führen
 - Zu große Unterschiede in den Datenwerten können zu Überlappungen bzw. großen freien Flächen ohne sichtbare Datenwerte führen
-- Bei zu hoher Punktdichte kann die Karte überladen wirken, während eine zu geringe Dichte wichtige Details verlieren lässt.
+- Wenn Punkte sich überlappen, wird es unübersichtlich
+- Punte können als Standorte verstanden werden
 
 ## Value-by-alpha Mapping
 
@@ -95,7 +96,7 @@ Arbeitsschritte
 
 Arbeitsschritte
 - Download der Daten: Wahldaten und Geometrie von der Bundeswahlleitung
-- Datenaufbereitung auf 5 Parteien (CDU + CSU, SPD,, Grüne, Linke, AfD) und nur Zweitstimme ist relevant
+- Datenaufbereitung auf 5 Parteien (CDU + CSU, SPD, Grüne, Linke, AfD) und nur Zweitstimme ist relevant
 - Verknüpfen der Geometrie mit den Sachdaten über die Wahlkreisnummer
 - Neue Felder berechnen
 - Ermitteln des Wahlsiegers je Wahlkreis + übernehmen der Prozentzahl in je eine neue Spalte
@@ -104,16 +105,15 @@ Arbeitsschritte
 - Durch Legende oder Text sollte klar werden, warum die Flächen unterschiedlich Intensiv dargestellt werden
 
 ### Vorteile
-- Bessere Gewichtung nach Bedeutung
-→ Dunkle Farben = viele Wähler (großer Einfluss)
-→ Blassere Farben = weniger Wähler (geringerer Einfluss)
-- Zusätzliche Dimension ohne Karte mehr hinzuzufügen, anstatt ein zweites Diagramm oder eine komplexe Visualisierung zu nutzen, wird die Bedeutung eines Gebiets durch Transparenz vermittelt
-•- Gibt den Daten mehr Kontext, die Karte vermittelt realistischer, wo politische Mehrheiten tatsächlich stark existieren
+- Zwei Variablen auf einer Ebene
+- Bessere Gewichtung nach Bedeutung durch die Intensität der Farbe
+- Gibt den Daten mehr Kontext, zeigt Veränderung auch bei wiederholtem Wahlsieg
 
 ### Nachteile
-- Hohe Transparenz kann dazu führen, dass Karten schwer lesbar sind, insbesondere bei komplexen Datensätzen
-- Oft nur grobe Einschätzung von Größenordnungen möglich, anstatt präzise Werte darzustellen
-- Transparenzwerte können je nach Bildschirm oder Druckqualität variieren
+- Aufwendige Datenaufbereitung
+- Hohe Transparenz kann dazu führen, dass Karten schwer lesbar sind
+- Es werden keine präzisen Werte dargestellt
+- Abgrenzung von ähnlichen Farben fällt schwer
 
 ## Tilemaps
 
@@ -128,15 +128,14 @@ Arbeitsschritte
 - Symbolisierung abgestuft in 5 Gruppen
 
 ### Vorteile
-•	Gleiche visuelle Repräsentation, große Flächenländer wie Bayern oder Niedersachsen erhalten nicht mehr Platz als kleine Stadtstaaten wie Bremen oder Hamburg
-•	Fokus auf den Inhalt, da alle Kacheln gleich groß sind, lenkt nichts von der Farbskala ab
-•	Kompakte und klar strukturierte Darstellung
-Die Karte ist übersichtlich, platzsparend und symmetrisch, ideal für Präsentationen oder Dokument
+-	Daten bzw. Inhalt rückt in den Vordergrund da alle Kacheln gleich groß sind
+-	Kompakte und klar strukturierte Darstellung
+- Die Karte ist übersichtlich und lässt leichte Interprätation zu
 
 ### Nachteile
-•	Da alle Regionen in einer standardisierten Form dargestellt werden, gehen natürliche Formen und Größenunterschiede verloren.
-•	Die Optik kann für Nutzer ungewohnt sein, da sie eher abstrakt gestaltet ist
-
+-	Genaue Lage, natürliche Formen und Größenunterschiede gehen verloren.
+-	Die Ansicht kann verwirrend wirken
+  
 ## Flowmaps
 
 ![](https://github.com/nibi5637/DTM-SoSe-2025/blob/main/REF_KAZ.png)
@@ -154,15 +153,15 @@ Arbeitsschritte
 - Symbolisierung der Erde über Markierung und Füllung die erstellen (Farbe und Glow)
 
 ### Vorteile
-- Darstellung von Objekten in einer Karte zueinander, flowmaps können Beziehungen zwischen Objekten in einer Karte anzeigen und nicht nur die Daten des Objekts
-- Gute Visualisierung von Mengen und Richtungen, die Dicke oder Farbe der Pfeile macht Unterschiede in Menge oder Stärke sofort sichtbar (z.B. Menge an Flüchtlingen oder Studenten)
-- Höherer Informationsgehalt und visuell ansprechender als Tabellen, flowmaps visualisieren Daten, welche sonst nur in Tabellen ablesbar wären auf einen Blick verständlich
-
+- Kann Beziehungen zwischen Objekten in einer Karte darstellen
+- Gute Visualisierung von Mengen und Richtungen
+- Hoher Informationsgehalt
+- Anschauliche Globus-ähnliche Darstellung
+  
 ### Nachteile
-- Bei hohen Datenmengen können sich Linien überlagern und die Karte unübersichtlich machen
-- Die Richtung und Stärke der Flüsse kann schwer zu erfassen sein, besonders wenn die Linien komplex verlaufen
+- Linien können sich bei hohen Datenmengen überlagern und die Karte unübersichtlich machen
+- Durch die Globus-ähnliche Darstellung können nicht alle Länder gut dargestellt werden
 - Darstellung nur bei recht großräumigen Daten möglich
-- Es sind präzise Daten zu Bewegungen oder Strömen nötig, die nicht immer verfügbar sind
 
 ## Mesh-Daten
 
@@ -183,17 +182,15 @@ Arbeitsschritte
 - GIF erstellen mit einem Browserprogramm oder über Photoshop
 
 ### Vorteile
-- Darstellung zeitlicher Entwicklungen 
-- Analyse Raum-Zeit-Zusammenhänge, so kann man z. B. beobachten, wie schnell sich ein Wetterereignis ausbreitet oder wie sich Umweltwerte mit der Zeit verändern
-- Darstellung Mehrer Größen gleichzeitig, die in einem Mesh-Datensatz enthaltenen Informationen kann man zeitgleich visualisieren oder kombinieren und dadurch zusammenhänge leichter erkennen.
-- Erstellung eines GIFS
-- Man kann die Mesh-Daten als GIF darstellen und damit auch außerhalb einer Gis-Programms nutzen, z.B. einer Präsentation oder einem Text.
+- Zeitliche Entwicklung wird dargestellt
+- Darstellung mehrer Größen gleichzeitig
+- Kombination aus Farben und Pfeilen ermöglicht gute Interpretation
+- Erstellung eines GIFS möglich
 
 ### Nachteile
-- Sie können große Datenmengen erzeugen, die viel Speicherplatz benötigen
-- Die Analyse und Visualisierung von Mesh-Daten erfordert leistungsstarke Programme und Hardware
-- Unterschiedliche Mesh-Datenformate können die Interoperabilität zwischen verschiedenen GIS-Systemen erschweren
-- Die feine Auflösung kann es schwierig machen, übergeordnete Muster zu erkennen
+- Große Datenmengen benötigen viel Speicherplatz und lange Downloadzeit
+- Aufwendige Erstellung
+- Keine detaillierte Ansicht
 
 ## Animation in GIS
 
@@ -204,20 +201,19 @@ Arbeitsschritte
 - Hintergrund wählen
 - einladen der csv über die Koordinaten
 - Mit dem „Geometrie nach Ausdruck“-Tool eine Linie für jeden Meteor erstellen ( @geometry, make_point( "LonEnd", "LatEnd" ))
-- Einen Varbverlauf für die Linien wählen um einen Meteorschweif darzustellen
+- Einen Farbverlauf für die Linien wählen um einen Meteorschweif darzustellen
 
 
 ### Vorteile
-- Veränderung über einen Zeitraum sichtbar machen
-- Bewegungen sichtbar machen, durch die Nutzung von Animationen kann man Bewegungen, wie in der Wetterkarte oder beim den Meteoritenschauern die Räumliche Veränderung der Objekte sichtbar machen.
-- Abbilden von mehreren Datenquellen, man kann mehre Datensätze nutzen, z.B: Meteoriten und Beobachtungsstationen und beobachten in welchem räumlichen Verhältnis beide zueinanderstehen.
+- Dynamische Animationen machen zeitliche Entwicklungen leicht verständlich
+- Es ist möglich mehre Datensätze zu nutzen
+- Farbverlauf der Linien sorgt für eindrucksvolle Darstellung
 
 ### Nachteile
-- Animationen mit vielen Layern oder großen Datensätzen können deinen Rechner stark beanspruchen und kann zu Verzögerungen oder Abstürzen führen.
-- Die exportierten Videos unterstützen nur bestimmte Formate ,was die Weiterverarbeitung und Nutzung einschränken kann.
-- Die Vorbereitung der Daten (z. B. Zeitstempel) kann aufwendig sein.
-- Animationen lenken manchmal von der eigentlichen Aussage ab und können die Übersichtlichkeit beeinträchtigen.
-
+- Große Datenmengen benötigen viel Speicherplatz und lange Downloadzeit
+- Weiterverarbeitung und Nutzung ist einschränkt
+- Die Vorbereitung der Daten kann aufwendig sein
+- Wird bei hoher Punktdichte unübersichtlich
 
 ## 3D-Gebäudemodelle
 
@@ -231,14 +227,14 @@ Arbeitsschritte
 - Visualisierung unter Ansicht 3D-Kartenansicht erstellen
 
 ### Vorteile
-- Realitätsnähere Darstellung. 3D-Gebäudemodelle können die Realität viel besser darstellen als es eine Karte kann. Vor allem wenn es weniger um die Positionen von Gebäuden, sondern um deren Eigenschaften, wie Höhe oder Form geht.
-- Abschätzen von Höhenunterschieden. Dadurch das die Höhe der Gebäude sichtbar ist kann man auch einschätzen, wie die Höhenunterschiede der Gebäude sich aufeinander auswirken. Z.B: Verdecken sich Gebäude gegenseitig oder gibt es bestimmte Sichtlinien die Eingehalten werden müssen.
-- Einfacher verständlich für Laien. Leihen die mit komplizierten Karten mit Höhenangaben überfordert wären können 3D-Modelle viel besser verstehen, da diese eher der Realität entsprechen und einfach wiederzuerkennen sind.
-- Viele Anwendungen in der Stadtplanung. Viele der oben genannten Beispiel sind vor allem in der Stadtplanung wichtig, hier kann man auch Modelle von potenziellen Neubauten untersuchen und die Auswirkungen auf das Stadtbild beobachten.
+- Realistische und anschauliche Darstellung
+- Vermittelt besseren räumlichen Eindruck der Stadtstrukturen
+- Abschätzen von Höhenunterschieden ist möglich
+- Interaktive Erkundung duch Zoom oder Perspektivenwechsel möglich 
 
 ### Nachteile
-- 3D-Modelle benötigen detaillierte Höhendaten die oft große Datenmengen verursachen und zu hohen Downloadzeiten führen.
-- Die Darstellung und Interaktion mit 3D-Modellen ist sehr rechenintensiv, insbesondere bei Echtzeit-Visualisierungen.
-- Abhängig von der Datenquelle können Ungenauigkeiten in der Höhendarstellung oder Modellierungsfehler auftreten.
-- Der gewählte Bildausschnitt muss sich explizit für eine 3D-Darstellung anbieten 
-- Nicht jeder Nutzer oder jede Plattform kann 3D-Daten effizient darstellen.
+- Große Datenmengen benötigen viel Speicherplatz und lange Downloadzeit
+- Die Darstellung und Interaktion mit ist sehr rechenintensiv
+- Der gewählte Bildausschnitt muss sich explizit für eine 3D-Darstellung anbieten
+- Vereinfachte Gebäudeformen
+- Modelle veralten schnell
