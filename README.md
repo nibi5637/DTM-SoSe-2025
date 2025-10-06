@@ -138,7 +138,7 @@ Arbeitsschritte
   
 ## Flowmaps
 
-![](https://github.com/nibi5637/DTM-SoSe-2025/blob/main/REF_KAZ.png)
+![](https://github.com/nibi5637/DTM-SoSe-2025/blob/main/REF_Kaza.png)
 
 Arbeitsschritte
 - Download der Datenvon UNHCR, Geometriedaten von Naturalearth 
