@@ -61,7 +61,7 @@ Arbeitsschritte
 
 ## Punktrasterkarte
 
-![]()
+![](https://github.com/nibi5637/DTM-SoSe-2025/blob/main/Karte_AirBNB_A3.png)
 
 Arbeitsschritte
 - Download der Daten: Übernachtungsdaten und Geometrie der Stadt von airbnb
